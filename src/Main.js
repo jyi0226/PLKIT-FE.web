@@ -1,7 +1,8 @@
 /*
-
-
+React Router 사용하여 애플리케이션의 모든 페이지 이동을 관리하고,
+각 페이지에 맞는 레이아웃 적용
 */
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./components/App";
 import {
