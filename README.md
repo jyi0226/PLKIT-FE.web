@@ -1,6 +1,3 @@
-Issue test
-
-
 # PLKIT-FE.web
 
 ## 목차
