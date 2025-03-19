@@ -1,3 +1,9 @@
+/*
+토스트 메시지를 전역적으로 관리하는 React Context API 제공
+사용자가 원하는 메시지를 특정 시간 동안 화면에 표시하고, 자동으로 사라지게 함
+*/
+
+
 import React, { createContext, useContext, useState } from 'react';
 import checkImage from '../assets/check.svg';
 import useIsMounted from '../hooks/useIsMounted';
