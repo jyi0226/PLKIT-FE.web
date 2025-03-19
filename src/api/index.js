@@ -1,3 +1,9 @@
+/*
+Axios를 사용하여 커뮤니티, 마켓 관련 데이터를 백엔드 서버와 통신하는 API 요청을 관리
+커뮤니티, 마켓 관련 API 요청을 담당하는 함수들 정의됨
+JWT 인증을 자동으로 추가하여, 로그인한 사용자만 API 요청 가능하도록 설정
+*/
+
 import mock from "./mock.json";
 import { v4 as uuidv4 } from "uuid";
 
