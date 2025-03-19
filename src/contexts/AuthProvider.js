@@ -1,3 +1,7 @@
+/*
+React Context API를 사용하여 로그인 상태를 전역으로 관리
+로그인, 로그아웃, 사용자 정보 조회, 업데이트 기능 제공
+*/
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../lib/axios";
