@@ -1,3 +1,9 @@
+/*
+모든 API 요청을 쉽게 만들고 관리하기 위한 설정 파일
+API 요청을 할 때 자동으로 로그인 정보 포함
+API 오류가 나면, 사용자에게 쉽게 알려줌
+*/
+
 import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL; // .env에서 가져온 서버 URL
 
