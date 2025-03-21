@@ -1,14 +1,17 @@
 // src/axiosConfig.js
 
 /*
-API 요청을 관리하는 설정 파일
-실제 서비스가 운영될 때에는, 불필요한 404 에러로 앱이 멈추지 않게 하고,
-개발할 때는 에러를 확인할 수 있게 함
+API 요청을 관리하고 axios로 서버에 데이터를 요청하거나 받음
+프로덕션 환경에서 404 에러로 인해 앱이 멈추지 않도록 처리하여 안정성 높임
+개발할 때는 에러를 표시하여 문제를 디버깅할 수 있도록 함
 */
 
 import axios from "axios";
 
-// 기본 axios 인스턴스에 글로벌 인터셉터 설정
+/*
+기본 axios 인스턴스에 글로벌 인터셉터 설정
+인터셉터: axios에서 요청이나 응답을 가로채서 추가 처리를 할 수 있는 기능
+*/
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
