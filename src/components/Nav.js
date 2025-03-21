@@ -1,7 +1,12 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+/*
+네비게이션 바를 만들고, 로그인 여부에 따라 메뉴 구성을 다르게 보여줌
+axios 라이브러리를 사용해 서버와 통신
+
+*/
+import { Link, NavLink, useNavigate } from "react-router-dom";//페이지 이동과 링크 처리
 import { useEffect, useState } from "react";
 import Container from "./Container";
-import axios from "../lib/axios";
+import axios from "../lib/axios";//서버로부터 데이터 가져오기
 
 //import UserMenu from "./UserMenu";
 import logoImg from "../assets/logo.svg";
@@ -34,12 +39,18 @@ function Nav() {
   const navigate = useNavigate(); // useNavigate 훅으로 페이지 이동
   const [avatarUrl, setAvatarUrl] = useState(null); // 아바타 이미지 상태 추가
 
+  /*
+  user과 logout을 전역 상태로 관리하여 어디서든 접근 가능하게 함
+  navigate()로 페이지를 이동할 수 있음
+  */
+
   // 아바타 이미지를 가져오는 함수
   async function fetchAvatar() {
     try {
       const res = await axios.get("/users/me/avatar", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          //Authorization 헤더를 통해 로그인 토큰 전달
         },
         responseType: "blob", // Blob 형식으로 응답
       });
@@ -110,5 +121,10 @@ function Nav() {
     </div>
   );
 }
+/*
+user가 있을 때: 아바타와 로그아웃 버튼
+user가 없을 때: 로그인/ 회원가입 버튼
+로고 클릭하면 홈 화면으로 이동 / market과 community로 이동하는 메뉴 링크 제공
+*/
 
 export default Nav;
