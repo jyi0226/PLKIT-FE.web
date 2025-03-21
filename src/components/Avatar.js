@@ -1,4 +1,7 @@
-// Avatar.js
+/*
+프로필 이미지를 표시하는 컴포넌트
+이미지가 없으면 기본 이미지를 이용하여 다양한 크기와 스타일 지원
+*/
 import styles from "./Avatar.module.css";
 import defaultAvatarImage from "../assets/default-avatar.svg";
 
