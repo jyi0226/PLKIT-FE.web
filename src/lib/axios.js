@@ -1,31 +1,33 @@
 /*
-모든 API 요청을 쉽게 만들고 관리하기 위한 설정 파일
-API 요청을 할 때 자동으로 로그인 정보 포함
-API 오류가 나면, 사용자에게 쉽게 알려줌
+API 요청 관리를 위한 전역 설정을 담당
+토큰 갱신과 네트워크 오류 처리를 통해 사용자가 원활하게 이용할 수 있도록 지원
+백엔드와의 통신 안정성을 확보하기 위해 다양한 오류를 처리
 */
 
-import axios from "axios";
+import axios from "axios"; //라이브러리 불러오기
 const BASE_URL = process.env.REACT_APP_BASE_URL; // .env에서 가져온 서버 URL
 
-if (!BASE_URL) {
+if (!BASE_URL) { //기본 url 누락 시 처리
   console.error("환경 변수 REACT_APP_BASE_URL이 설정되지 않았습니다.");
   alert("시스템 설정 오류: 기본 URL이 없습니다. 관리자에게 문의하세요.");
   throw new Error("환경 변수 REACT_APP_BASE_URL 누락");
 }
 
-const instance = axios.create({
+const instance = axios.create({ //axios 인스턴스 설정
   baseURL: `${BASE_URL}`,
 });
 
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {//모든 요청을 보내기 전에 토큰 추가
   const token = localStorage.getItem("accessToken");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  //로컬 스토리지에 저장된 토큰을 가져와 Authorization 헤더에 추가
   return config;
 });
 
 instance.interceptors.response.use(
+  //서버에서 데이터가 오면 그 데이터를 중간에 한 번 처리/수정 뒤 사용
   (res) => res,
   async (error) => {
     const originalRequest = error.config;

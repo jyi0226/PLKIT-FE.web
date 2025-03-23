@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import { Link, useSearchParams, useParams } from "react-router-dom";
+/*
+커뮤니티 게시글 목록을 보여주고, 추가, 수정, 삭제를 처리하는 페이지
+API 통신을 통해 게시글 목록을 가져오고, 추가/수정/삭제를 처리
+JWT 토큰 인증을 통해 로그인 여부를 확인하고 관리
+사용자가 링크를 클릭하면 React Router를 통해 페이지 전환이 자연스럽게 이루어짐
+*/
+import { useState, useEffect } from "react"; //상태 관리
+import { Link, useSearchParams, useParams } from "react-router-dom"; //페이지 이동과 URL 파라미터 관리
 import {
   getCommunitys,
   addCommunity,
   deleteCommunity,
   uploadCommunityImage,
   fetchCommunityImage,
-} from "../api";
-import { useAuth } from "../contexts/AuthProvider";
+} from "../api"; //api 함수 불러오기
+import { useAuth } from "../contexts/AuthProvider"; //로그인 상태와 사용자 정보 가져옴
 import DateText from "../components/DateText";
 import ListPage from "../components/ListPage";
 import Warn from "../components/Warn";
@@ -39,7 +45,6 @@ function CommunityItem({ community, onDelete, onEdit }) {
         console.error("작성자 이름 가져오기 오류:", error);
       }
     }
-
     if (community.writer_id) {
       fetchWriterName();
     }
@@ -104,19 +109,19 @@ function CommunityListPage() {
         setCommunitys(data.filter((community) => community !== null));
       } catch (error) {
         console.error("커뮤니티 목록 불러오기 오류:", error);
-        setCommunitys([]);
+        setCommunitys([]); //데이터가 없거나 오류 발생시 빈 배열로 처리
       }
     }
     fetchCommunities();
   }, [keyword]);
 
-  const handleKeywordChange = (e) => setKeyword(e.target.value);
+  const handleKeywordChange = (e) => setKeyword(e.target.value); //검색어 입력 시 상태 업데이트
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams(keyword ? { keyword } : {});
+    setSearchParams(keyword ? { keyword } : {}); //검색 버튼 클릭 시 URL에 검색어 반영
   };
 
   const handleImageChange = (e) => {
@@ -130,9 +135,10 @@ function CommunityListPage() {
     const success = await deleteCommunity(id);
     if (success)
       setCommunitys(communitys.filter((community) => community.id !== id));
+      //삭제 성공 시 해당 게시글을 목록에서 제거
   };
 
-  const handleEdit = (community) => {
+  const handleEdit = (community) => { //게시글 클릭 시 수정 모드로 전환하고 제목과 내용을 상태에 반영
     setTitle(community.title);
     setContent(community.content);
     setImage(null); // 이미지 미리보기 초기화
@@ -143,12 +149,13 @@ function CommunityListPage() {
     e.preventDefault();
     if (!user) {
       alert("로그인이 필요합니다.");
-      return;
+      return;// 로그인하지 않으면 경고 메시지 표시 후 종료
     }
 
     try {
       // 새로운 커뮤니티 게시물 추가
-      const newCommunity = await addCommunity({
+      const newCommunity = await addCommunity({ 
+        //서버에 데이터 전송하여 새로운 게시글 추가
         title,
         content,
         writer_id: user.id,

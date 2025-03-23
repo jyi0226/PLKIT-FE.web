@@ -1,3 +1,9 @@
+/*
+마켓 게시글의 상세 내용을 보여주고, 삭제와 위시리스트 추가 기능을 제공하는 페이지
+삭제 처리와 위시리스트 추가 시 알림과 함께 페이지 이동을 처리하여 사용자 경험을 향상시킴
+백엔드와의 데이터 교환을 통해 최신 정보를 유지하고, 잘못된 접근에 대비해 URL 이동 처리를 강화함
+*/
+
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { getMarketById, deleteMarket, addWishlist } from "../api";
 import styles from "./MarketPage.module.css";

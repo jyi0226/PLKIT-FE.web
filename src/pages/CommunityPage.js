@@ -1,3 +1,10 @@
+/*
+커뮤니티 게시글의 상세 내용을 보여주는 페이지로, 답변 목록도 함께 표시
+작성자 정보와 게시글 이미지를 서버에서 가져와 상태로 관리하며, 로딩 상태를 추가하여 안정성 높임
+백엔드와의 데이터 교환을 통해 최신 정보를 반영하며, 페이지 이동도 자연스럽게 처리함
+답변이 없는 경우 사용자에게 안내 메시지 제공하여 빈 화면 방지
+*/
+
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";

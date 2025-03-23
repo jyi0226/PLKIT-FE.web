@@ -1,9 +1,10 @@
 /*
-React Router 사용하여 애플리케이션의 모든 페이지 이동을 관리하고,
-각 페이지에 맞는 레이아웃 적용
+애플리케이션의 모든 페이지 이동을 관리하며, 다양한 페이지와 레이아웃 연결
+React Router를 이용해 URL 경로에 따라 적절한 페이지 렌더링
+레이아웃 컴포넌트를 사용하여 중복 구조를 제거하고, 코드 유지보수를 용이하게 함
 */
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom"; //URL 경로를 기반으로 페이지 관리
 import App from "./components/App";
 import {
   FullLayout,
