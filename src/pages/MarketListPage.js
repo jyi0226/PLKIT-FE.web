@@ -1,3 +1,8 @@
+/*
+스마트팜 데이터를 포함한 마켓 게시글 목록을 보여주며, 추가/수정/삭제를 처리하는 페이지
+백엔드와의 통신을 통해 CRUD 작업을 수행하며, 로그인 상태를 확인하여 작업 권한을 관리함
+MarketItem 컴포넌트를 활용하여 개별 게시글을 보여주고, 클릭 시 상세 페이지로 이동
+*/
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ListPage from "../components/ListPage";
@@ -64,7 +69,7 @@ function MarketListPage() {
   // API로부터 마켓 게시물 목록 가져오는 함수
   async function fetchMarketPosts() {
     try {
-      const posts = await getMarkets(keyword); // API 호출
+      const posts = await getMarkets(keyword); // API 호출하여 서버에서 마켓 데이터를 받아옴
       console.log("API에서 가져온 마켓 데이터:", posts); // 데이터 구조 확인
       setMarkets(posts); // 상태에 API 응답 데이터 설정
     } catch (error) {
