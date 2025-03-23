@@ -22,9 +22,9 @@
   color: #878787;
 }
 
- {
+
   /*marketItem.module.css*/
-}
+
 .marketItem .thumb {
   display: flex;
   align-items: center;
@@ -62,9 +62,9 @@
   -webkit-line-clamp: 2;
 }
 
- {
+
   /* src/pages/MarketListPage.js */
-}
+
 /* 기존 스타일 유지 */
 
 /* 새 게시물 등록 폼 스타일 */
