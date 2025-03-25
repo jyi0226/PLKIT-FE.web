@@ -23,7 +23,11 @@
 }
 
 
+<<<<<<< HEAD
 /*marketItem.module.css*/
+=======
+  /*marketItem.module.css*/
+>>>>>>> 0558f2f01819fde9be58059ece88a47fecc39f44
 
 .marketItem .thumb {
   display: flex;
@@ -63,7 +67,11 @@
 }
 
 
+<<<<<<< HEAD
 /* src/pages/MarketListPage.js */
+=======
+  /* src/pages/MarketListPage.js */
+>>>>>>> 0558f2f01819fde9be58059ece88a47fecc39f44
 
 /* 기존 스타일 유지 */
 

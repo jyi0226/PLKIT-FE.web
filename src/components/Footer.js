@@ -1,3 +1,9 @@
+/*
+웹페이지의 가장 아래에 표시되는 정보와 소셜 미디어
+링크를 보여주는 컴포넌트
+*/
+
+
 import logo from "../assets/grayLogo.svg";
 import facebookIcon from "../assets/facebook.svg";
 import twitterIcon from "../assets/twitter.svg";
@@ -36,5 +42,4 @@ function Footer() {
     </div>
   );
 }
-
 export default Footer;
